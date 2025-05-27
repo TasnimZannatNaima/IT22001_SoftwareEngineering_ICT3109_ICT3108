@@ -1,0 +1,115 @@
+//All codes are here
+
+// 1. kthSmallestElement.java
+import java.util.*;
+
+public class KthSmallestElement {
+
+    public static int findKthSmallest(List<Integer> list, int k) {
+        Collections.sort(list); // Sort the list
+        return list.get(k - 1); // Return k-th smallest
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(5, 3, 8, 1, 2);
+        int k = 3;
+        System.out.println("Kth smallest: " + findKthSmallest(numbers, k));
+    }
+}
+
+// 2.WordFrequencyMap.java
+import java.util.*;
+
+public class WordFrequencyMap {
+    public static void main(String[] args) {
+        String text = "apple banana apple orange banana apple";
+        TreeMap<String, Integer> freqMap = new TreeMap<>();
+
+        for (String word : text.split(" ")) {
+            freqMap.put(word, freqMap.getOrDefault(word, 0) + 1);
+        }
+
+        System.out.println(freqMap); // Output word frequencies
+    }
+}
+
+
+// 3. QueueStackUsingPriorityQueue.java
+import java.util.*;
+
+public class QueueStackUsingPriorityQueue {
+    
+    static class PAQueue {
+        private PriorityQueue<int[]> queue = new PriorityQueue<>(
+            Comparator.comparingInt(a -> a[1])
+        );
+        
+        private int time = 0;
+
+        public void offer(int val) {
+            queue.offer(new int[] {val, time++});
+        }
+
+        public int poll() {
+            return queue.poll()[0];
+        }
+    }
+
+    static class PAStack {
+        private PriorityQueue<int[]> stack = new PriorityQueue<>(
+            (a, b) -> b[1] - a[1]
+        );
+
+        private int time = 0;
+
+        public void push(int val) {
+            stack.offer(new int[] {val, time++});
+        }
+
+        public int pop() {
+            return stack.poll()[0];
+        }
+    }
+
+    public static void main(String[] args) {
+        PAQueue q = new PAQueue();
+        q.offer(1); q.offer(2); q.offer(3);
+        System.out.println("Queue poll: " + q.poll());
+
+        PAStack s = new PAStack();
+        s.push(1); s.push(2); s.push(3);
+        System.out.println("Stack pop: " + s.pop());
+    }
+}
+
+
+// 4. StudentTreeMap.java
+import java.util.*;
+
+class Student {
+    String name;
+    int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String toString() {
+        return name + " (" + age + ")";
+    }
+}
+
+
+
+public class StudentTreeMap {
+    public static void main(String[] args) {
+        TreeMap<Integer, Student> students = new TreeMap<>();
+
+        students.put(101, new Student("Naima", 29));
+        students.put(102, new Student("Kuldip", 28));
+    for(Map.Entry<Integer,Student>entry:student.entrySet()){
+      System.out.println(entry.getValue());
+    }
+   }
+  }
